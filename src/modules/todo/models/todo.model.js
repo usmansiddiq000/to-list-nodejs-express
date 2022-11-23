@@ -20,7 +20,7 @@ const TodoSchema = new Schema(
       name: {
         type: String,
         trim: true,
-        default: '',
+        required: true,
         validate: [
           validateLocalStrategyProperty,
           'Please fill in todo name',
@@ -29,7 +29,7 @@ const TodoSchema = new Schema(
       description: {
         type: String,
         trim: true,
-        default: '',
+        required: true,
         validate: [
           validateLocalStrategyProperty,
           'Please fill in todo description',

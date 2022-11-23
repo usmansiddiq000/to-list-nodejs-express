@@ -1,5 +1,6 @@
 'use strict';
-
+const mongoose = require('mongoose');
+const Todo = mongoose.model('Todo');
 const {body} = require('express-validator');
 
 exports.validationSchema = (method) => {
@@ -10,6 +11,12 @@ exports.validationSchema = (method) => {
             .exists({checkFalsy: true})
             .withMessage('firstName is required')
             .bail()
+            .custom(async (value) => {
+              const todo = await Todo.findOne({name: value});
+              if (todo) {
+                return Promise.reject(new Error('todo already exists'));
+              }
+            })
             .isLength({max: 25})
             .withMessage('name max length should be 25 characters')
             .trim(),
