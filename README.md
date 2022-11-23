@@ -1,18 +1,13 @@
 Created by Muhammad Usman Siddiq
-# nodejs-express-swagger-boiler-plate
-nodejs express boiler plate with swagger integrated
+# nodejs-express-swagger-todo-list
+nodejs express todo-list with swagger integrated
 ```
-git clone https://github.com/usmansiddiq000/nodejs-express-swagger-boiler-plate.git
+git clone git@github.com:usmansiddiq000/to-list-nodejs-express.git
 ```
 inside project folder run command
 ```
 npm install
 ```
-create folder name `keys` in root directory. 
-create RSA keyp pairs
-store keys in `keys` folder with name
-private.key
-public.key
 
 create `.env` file
 copy `.env-dev` to `.env`
