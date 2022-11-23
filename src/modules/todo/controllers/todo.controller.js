@@ -38,24 +38,11 @@ const whitelistedFields = ['name', 'description'];
  *                  example: this is todo
  *      responses:
  *        200:
- *          description: User signin.
+ *          description: create Todo.
  *          content:
  *            application/json:
  *              schema:
- *                type: object
- *                properties:
- *                  id:
- *                    type: string
- *                    description: id
- *                    example: 637dbd600eaacca6b207e7d3
- *                  name:
- *                    type: string
- *                    description: name of todo
- *                    example: abc
- *                  description:
- *                    type: string
- *                    description:  description of todo
- *                    example: this is todo
+ *                $ref: '#/components/schemas/Todo'
  */
 
 exports.create = async (req, res) => {
@@ -80,24 +67,11 @@ exports.create = async (req, res) => {
  *      description: Get all todo.
  *      responses:
  *        200:
- *          description: User signin.
+ *          description: Get all Todos.
  *          content:
  *            application/json:
  *              schema:
- *                type: array
- *                properties:
- *                  id:
- *                    type: string
- *                    description: id
- *                    example: 637dbd600eaacca6b207e7d3
- *                  name:
- *                    type: string
- *                    description: name of todo
- *                    example: abc
- *                  description:
- *                    type: string
- *                    description:  description of todo
- *                    example: this is todo
+ *                $ref: '#/components/schemas/Todos'
  */
 
 exports.getAll = async (req, res) => {
@@ -133,36 +107,14 @@ exports.getAll = async (req, res) => {
  *        content:
  *          application/json:
  *            schema:
- *              type: object
- *              properties:
- *                name:
- *                  type: string
- *                  description: name of todo
- *                  example: abc
- *                description:
- *                  type: string
- *                  description: description of todo
- *                  example: this is todo
+ *              $ref: '#/components/schemas/Todo'
  *      responses:
  *        200:
  *          description: User signin.
  *          content:
  *            application/json:
  *              schema:
- *                type: object
- *                properties:
- *                  id:
- *                    type: string
- *                    description: id
- *                    example: 637dbd600eaacca6b207e7d3
- *                  name:
- *                    type: string
- *                    description: name of todo
- *                    example: abc
- *                  description:
- *                    type: string
- *                    description:  description of todo
- *                    example: this is todo
+ *                $ref: '#/components/schemas/Todo'
  */
 
 exports.update = async (req, res) => {
@@ -201,20 +153,7 @@ exports.update = async (req, res) => {
  *          content:
  *            application/json:
  *              schema:
- *                type: object
- *                properties:
- *                  id:
- *                    type: string
- *                    description: id
- *                    example: 637dbd600eaacca6b207e7d3
- *                  name:
- *                    type: string
- *                    description: name of todo
- *                    example: abc
- *                  description:
- *                    type: string
- *                    description:  description of todo
- *                    example: this is todo
+ *                $ref: '#/components/schemas/Todo'
  */
 
 
@@ -290,3 +229,46 @@ exports.todoById = async (req, res, next, id) => {
     return handle500(res, e.message);
   }
 };
+
+
+/**
+ * @swagger
+ *  components:
+ *    schemas:
+ *      Todos:
+ *        type: object
+ *        properties:
+ *          status:
+ *            type: boolean
+ *            description: response status
+ *            example: true
+ *          data:
+ *            type: array
+ *            items:
+ *              $ref: '#/components/schemas/TodoScheme'
+ *      Todo:
+ *        type: object
+ *        properties:
+ *          status:
+ *            type: boolean
+ *            description: response status
+ *            example: true
+ *          data:
+ *            type: object
+ *            $ref: '#/components/schemas/TodoScheme'
+ *      TodoScheme:
+ *        type: object
+ *        properties:
+ *          id:
+ *            type: string
+ *            description: id
+ *            example: 637dbd600eaacca6b207e7d3
+ *          name:
+ *            type: string
+ *            description: name of todo
+ *            example: abc
+ *          description:
+ *            type: string
+ *            description:  description of todo
+ *            example: this is todo
+*/
