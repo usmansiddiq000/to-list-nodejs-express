@@ -9,7 +9,7 @@ exports.validationSchema = (method) => {
       return [
         body('name')
             .exists({checkFalsy: true})
-            .withMessage('firstName is required')
+            .withMessage('name is required')
             .bail()
             .custom(async (value) => {
               const todo = await Todo.findOne({name: value});
