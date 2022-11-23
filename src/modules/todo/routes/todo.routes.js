@@ -11,6 +11,8 @@ module.exports = function(app) {
           todoController.create,
       )
       .get(todoController.getAll);
+
+
   app.route('/api/todo/:todoId')
       .put(
           [validationSchema('todo'), validatorErrorHandler],
