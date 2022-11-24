@@ -4,7 +4,7 @@ const todoController = require('../controllers/todo.controller');
 const {validationSchema} = require('../validators/todo.validator');
 const {validatorErrorHandler} = require('../../core/utils/validator-error-handler');
 
-module.exports = function(app) {
+module.exports = (app) => {
   app.route('/api/todo')
       .post(
           [validationSchema('todo'), validatorErrorHandler],

@@ -7,7 +7,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const validateLocalStrategyProperty = function(property) {
+const validateLocalStrategyProperty = (property) => {
   return property.length;
 };
 
